@@ -30,8 +30,8 @@ def main(argv=None):
     
     for i in range(10):
        
-        num_args = random.choice(range(1,10)) 
-        sent_values = [random.choice(range(10)) for j in range(num_args)]
+        num_args = random.choice(list(range(1,10))) 
+        sent_values = [random.choice(list(range(10))) for j in range(num_args)]
         c.send("multi_ping",len(sent_values),*sent_values)
 
         received_cmd = c.receive()
@@ -51,10 +51,10 @@ def main(argv=None):
         else:
             success = "PASS"
 
-        print("{:10s} --> {} --> {} --> {:4}".format(cmd,
+        print(("{:10s} --> {} --> {} --> {:4}".format(cmd,
                                                      sent_values,
                                                      received,
-                                                     success))
+                                                     success)))
 
 if __name__ == "__main__":
     main()

@@ -42,10 +42,10 @@ def main(argv=None):
         else:
             success = "FAIL"
 
-        print("{:10s} --> {:10.6f} --> {:10.6f} --> {:4}".format(cmd,
+        print(("{:10s} --> {:10.6f} --> {:10.6f} --> {:4}".format(cmd,
                                                                  value,
                                                                  received,
-                                                                 success))
+                                                                 success)))
 
 if __name__ == "__main__":
     main()

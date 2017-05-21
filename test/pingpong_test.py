@@ -61,7 +61,7 @@ class Test:
         return a == b
 
     def print_results(self,sent_value,received_value,status):
-        print(" .... {:20} --> {:20} : {:20}".format(sent_value,received_value,status))
+        print((" .... {:20} --> {:20} : {:20}".format(sent_value,received_value,status)))
 
 class BoolTest(Test):
     """
@@ -141,9 +141,9 @@ class FloatTest(Test):
 
     def print_results(self,sent_value,received_value,status):
         try:
-            print(" .... {:20.5e} --> {:20.5e} : {:20}".format(sent_value,received_value,status))
+            print((" .... {:20.5e} --> {:20.5e} : {:20}".format(sent_value,received_value,status)))
         except ValueError:
-            print(" .... {:20} --> {:20} : {:20}".format(sent_value,received_value,status))
+            print((" .... {:20} --> {:20} : {:20}".format(sent_value,received_value,status)))
 
 class CharTest(Test):
     """
@@ -158,9 +158,9 @@ class CharTest(Test):
 
     def print_results(self,sent_value,received_value,status):
         try:
-            print(b" .... " + sent_value.encode("raw-unicode-escape") + b' --> ' + received_value.encode("raw-unicode-escape") + b' : ' + status.encode("ascii"))
+            print((b" .... " + sent_value.encode("raw-unicode-escape") + b' --> ' + received_value.encode("raw-unicode-escape") + b' : ' + status.encode("ascii")))
         except:
-            print(" .... {:20} --> {:20} : {:20}".format(sent_value,received_value,status))
+            print((" .... {:20} --> {:20} : {:20}".format(sent_value,received_value,status)))
 
 class StringTest(Test):
     """
@@ -179,7 +179,7 @@ class StringTest(Test):
                         "Test string/,/;/, with escape"]
 
     def print_results(self,sent_value,received_value,status):
-        print(" .... {:40} --> {:40} : {:40}".format(sent_value,received_value,status))
+        print((" .... {:40} --> {:40} : {:40}".format(sent_value,received_value,status)))
 
 class MultiTest(Test):
     """
@@ -196,8 +196,8 @@ class MultiTest(Test):
            
         self.test_set = [[0,0,0.0]]      
         for i in range(50):
-            self.test_set.append([random.choice(range(-30000,30000,500)),
-                                  random.choice(range(-10000000,10000000,500)),
+            self.test_set.append([random.choice(list(range(-30000,30000,500))),
+                                  random.choice(list(range(-10000000,10000000,500))),
                                   random.choice([r*1.0 for r in range(-10000000,10000000,500)])])
            
         self.test_set.append([-40000,0,0.0])
@@ -221,11 +221,11 @@ class MultiTest(Test):
         b = received_value
 
         try:
-            print(" .... ({},{},{:.5e}) --> ({},{},{:.5e}): {:40}".format(a[0],a[1],a[2],
+            print((" .... ({},{},{:.5e}) --> ({},{},{:.5e}): {:40}".format(a[0],a[1],a[2],
                                                                           b[0],b[1],b[2],
-                                                                          status))
+                                                                          status)))
         except:
-            print(" .... {} --> {}: {:40}".format(sent_value,received_value,status))
+            print((" .... {} --> {}: {:40}".format(sent_value,received_value,status)))
 
 
 class PingPong:
@@ -294,7 +294,7 @@ class PingPong:
         """
 
         print("------------------------------------------------------------------")
-        print("Testing ping-pong for {}.".format(self.type_name))
+        print(("Testing ping-pong for {}.".format(self.type_name)))
   
         success_dict = {True:"PASS",False:"FAIL"}
     
@@ -344,9 +344,9 @@ class PingPong:
             self.test_class.print_results(e,v,success_dict[success])
 
       
-        print("Passed {} of {} ping-pong tests for {}.".format(sum(success_list),
+        print(("Passed {} of {} ping-pong tests for {}.".format(sum(success_list),
                                                                len(success_list),
-                                                               self.type_name))
+                                                               self.type_name)))
 
         print("------------------------------------------------------------------")
         print()
@@ -434,8 +434,8 @@ def main(argv=None):
     print("*                   FINAL SUMMARY                                *")
     print("******************************************************************")
     print()
-    print("SUMMARY: Passed {} of {} binary interface tests".format(sum(binary_trials),
-                                                                   len(binary_trials)))
+    print(("SUMMARY: Passed {} of {} binary interface tests".format(sum(binary_trials),
+                                                                   len(binary_trials))))
     if sum(binary_trials) != len(binary_trials):
         print("WARNING: some tests failed!")
     print()
@@ -483,8 +483,8 @@ def main(argv=None):
     print("*                   FINAL SUMMARY                                *")
     print("******************************************************************")
     print()
-    print("SUMMARY: Passed {} of {} string interface tests".format(sum(string_trials),
-                                                                   len(string_trials)))
+    print(("SUMMARY: Passed {} of {} string interface tests".format(sum(string_trials),
+                                                                   len(string_trials))))
     print()
     if sum(string_trials) != len(string_trials):
         print("WARNING: some tests failed!")

@@ -50,10 +50,10 @@ def main(argv=None):
         else:
             success = "PASS"
 
-        print("{:10s} --> {} --> {} --> {:4}".format(cmd,
+        print(("{:10s} --> {} --> {} --> {:4}".format(cmd,
                                                      values,
                                                      received,
-                                                     success))
+                                                     success)))
 
 if __name__ == "__main__":
     main()
